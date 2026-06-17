@@ -20,7 +20,6 @@ class ProjectPlace(db.Model):
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
     external_id = db.Column(db.String(100), nullable=False)
     title = db.Column(db.String(255), nullable=True)
-    image_url = db.Column(db.String(500), nullable=True)
     notes = db.Column(db.Text, nullable=True)
     visited = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
