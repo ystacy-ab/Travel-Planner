@@ -1,9 +1,13 @@
+"""db"""
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 db = SQLAlchemy()
 
 class Project(db.Model):
+    """
+    Represents a travel project
+    """
     __tablename__ = 'projects'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
@@ -15,6 +19,9 @@ class Project(db.Model):
     places = db.relationship('ProjectPlace', backref='project', lazy=True, cascade="all, delete-orphan")
 
 class ProjectPlace(db.Model):
+    """
+    Represents a specific destination or artwork
+    """
     __tablename__ = 'project_places'
     id = db.Column(db.Integer, primary_key=True)
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
